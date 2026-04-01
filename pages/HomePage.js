@@ -4,7 +4,7 @@ export class HomePage {
   }
 
   async goTo() {
-    await this.page.goto('https://example.com');
+    await this.page.goto('https://www.saucedemo.com/');
   }
 
   async getTitle() {
