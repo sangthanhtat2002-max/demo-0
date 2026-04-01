@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "playwright test",
-    "test:ui": "playwright test --ui",
+    "test:ui": "playwright test --ui --ui-host 127.0.0.1",
     "test:debug": "playwright test --debug",
     "test:headed": "playwright test --headed",
     "test:chrome": "playwright test --project=chromium",
@@ -18,7 +18,7 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "@playwright/test": "^1.58.2"
+    "@playwright/test": "^1.40.0"
   },
   "dependencies": {
     "dotenv": "^17.3.1"

@@ -76,4 +76,16 @@ test.describe('Login Page', () => {
     await expect(page.locator('[data-test="error"]')).toBeVisible();
     await expect(page.locator('[data-test="error"]')).toContainText('Epic sadface: Username is required');
   });
+
+  // TC6: Login với tài khoản bị khóa - locked_out_user
+  test('TC6 - Login thất bại - tài khoản bị khóa', async ({ page }) => {
+    const loginPage = new LoginPage(page);
+
+    await loginPage.goTo();
+    await loginPage.loginWithoutWait('locked_out_user', process.env.SAUCE_PASSWORD);
+
+    // ✅ Verify error message
+    await expect(page.locator('[data-test="error"]')).toBeVisible();
+    await expect(page.locator('[data-test="error"]')).toContainText('Epic sadface: Sorry, this user has been locked out.');
+  });
 });
