@@ -1,11 +1,6 @@
 export class LoginPage {
   constructor(page) {
     this.page = page;
-
-    // Selector của SauceDemo
-    this.usernameInput = 'input#user-name';
-    this.passwordInput = 'input#password';
-    this.loginBtn = 'input#login-button';
   }
 
   async goTo() {
@@ -15,15 +10,15 @@ export class LoginPage {
   }
 
   async login(username, password) {
-    await this.page.fill(this.usernameInput, username);
-    await this.page.fill(this.passwordInput, password);
-    await this.page.click(this.loginBtn, { force: true });
+    await this.page.getByPlaceholder('Username').fill(username);  // ← LOCATOR
+    await this.page.getByPlaceholder('Password').fill(password);  // ← LOCATOR
+    await this.page.getByRole('button', { name: 'Login' }).click(); // ← LOCATOR
     await this.page.waitForURL(/inventory/, { timeout: 10000 });
   }
 
   async loginWithoutWait(username, password) {
-    await this.page.fill(this.usernameInput, username);
-    await this.page.fill(this.passwordInput, password);
-    await this.page.click(this.loginBtn, { force: true });
+    await this.page.getByPlaceholder('Username').fill(username);  // ← LOCATOR
+    await this.page.getByPlaceholder('Password').fill(password);  // ← LOCATOR
+    await this.page.getByRole('button', { name: 'Login' }).click(); // ← LOCATOR
   }
 }
