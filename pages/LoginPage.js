@@ -1,24 +1,28 @@
 export class LoginPage {
   constructor(page) {
     this.page = page;
+    // Tìm locator của nút login / form elements
+    this.loginButton = this.page.getByRole('button', { name: 'Login' });
+    this.emailInput = this.page.locator('[id="1-email"]');
+    this.passwordInput = this.page.locator('[id="1-password"]');
+    this.submitInput = this.page.locator('[id="1-login"]');
   }
 
-  async goTo() {
-    const url = process.env.BASE_URL || 'https://www.saucedemo.com/';
-    await this.page.goto(url);
-    await this.page.waitForLoadState('networkidle');
+  // Click nút Login để dismiss permission prompt
+  async clickLoginButton() {
+    await this.loginButton.click();
   }
 
-  async login(username, password) {
-    await this.page.getByPlaceholder('Username').fill(username);  // ← LOCATOR
-    await this.page.getByPlaceholder('Password').fill(password);  // ← LOCATOR
-    await this.page.getByRole('button', { name: 'Login' }).click(); // ← LOCATOR
-    await this.page.waitForURL(/inventory/, { timeout: 10000 });
+  // Cấp quyền truy cập vị trí
+  async allowLocation() {
+    await this.page.context().grantPermissions(['geolocation']);
+    await this.page.context().setGeolocation({ latitude: 1.3521, longitude: 103.8198 });
   }
 
+  // action: input login info and click submit
   async loginWithoutWait(username, password) {
-    await this.page.getByPlaceholder('Username').fill(username);  // ← LOCATOR
-    await this.page.getByPlaceholder('Password').fill(password);  // ← LOCATOR
-    await this.page.getByRole('button', { name: 'Login' }).click(); // ← LOCATOR
+    await this.emailInput.fill(username);
+    await this.passwordInput.fill(password);
+    await this.submitInput.click();
   }
 }

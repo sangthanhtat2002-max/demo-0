@@ -1,10 +1,10 @@
-export class HomePage {
+export class BasePage {
   constructor(page) {
     this.page = page;
   }
 
-  async goTo() {
-    await this.page.goto('https://www.saucedemo.com/');
+  async goToURL() {
+    await this.page.goto('https://dfm.qa.spdigital.sg/login/');
   }
 
   async getTitle() {
