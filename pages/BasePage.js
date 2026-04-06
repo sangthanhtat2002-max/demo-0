@@ -4,7 +4,7 @@ export class BasePage {
   }
 
   async goToURL() {
-    await this.page.goto('https://dfm.qa.spdigital.sg/login/');
+    await this.page.goto('https://cosmos.qa.energy.spdigital.sg/');
   }
 
   async getTitle() {
