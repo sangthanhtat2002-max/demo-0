@@ -1,4 +1,4 @@
-export class Mainpage {
+export class OverviewPage {
     constructor(page) {
         this.page = page;
         this.chargingStationsSectionTitle = this.page.locator('span').filter({ hasText: 'Charging Stations' });
@@ -7,6 +7,8 @@ export class Mainpage {
         this.maintenanceSectionTitle = this.page.locator('span').filter({ hasText: 'Maintenance' });
         this.accountSectionTitle = this.page.locator('a[href="/account"]');
         this.eventsSectionTitle = this.page.locator('a[href="/events"]');
+
+        this.chargingStationsTableRows = this.page.locator('[data-testid="chargepoint-row"]');
     }
 
     async getChargingStationsSectionTitle() {
@@ -31,5 +33,9 @@ export class Mainpage {
 
     async getEventsSectionTitle() {
         return await this.eventsSectionTitle.textContent();
+    }
+
+    async waitForChargingStationsTableLoaded() {
+        await this.chargingStationsTableRows.first().waitFor({ state: 'visible', timeout: 15000 });
     }
 }           
