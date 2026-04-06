@@ -1,10 +1,10 @@
 export class BasePage {
-  constructor(page) {
-    this.page = page;
+  constructor() {
+    this.url = process.env.BASE_URL;
   }
 
   async goToURL() {
-    await this.page.goto('https://cosmos.qa.energy.spdigital.sg/');
+    await this.page.goto(this.url);
   }
 
   async getTitle() {
