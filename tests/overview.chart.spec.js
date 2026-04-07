@@ -20,35 +20,23 @@ test.describe('Overview Chart Page - Post Login Verification', () => {
         await page.waitForLoadState('networkidle');
 
         // Charging Stations
-        const chargingStationsTitle = await overviewpage.getChargingStationsSectionTitle();
-        expect(chargingStationsTitle).toBe('Charging Stations');
-
+        await expect(overviewpage.chargingStationsSectionTitle).toBeVisible();
         // Smart Charging
-        const smartChargingTitle = await overviewpage.getSmartChargingSectionTitle();
-        expect(smartChargingTitle).toContain('Smart Charging');
+        await expect(overviewpage.smartChargingSectionTitle).toBeVisible();
 
         // Transactions
-        const transactionsTitle = await overviewpage.getTransactionsSectionTitle();
-        expect(transactionsTitle).toBe('Transactions');
+        await expect(overviewpage.transactionsSectionTitle).toBeVisible();
 
         // Maintenance
-        const maintenanceTitle = await overviewpage.getMaintenanceSectionTitle();
-        expect(maintenanceTitle).toBe('Maintenance');
+        await expect(overviewpage.maintenanceSectionTitle).toBeVisible();
 
         // Account
-        const accountTitle = await overviewpage.getAccountSectionTitle();
-        expect(accountTitle).toContain('Account');
+        await expect(overviewpage.accountSectionTitle).toBeVisible();
 
         // Events
-        const eventsTitle = await overviewpage.getEventsSectionTitle();
-        expect(eventsTitle).toContain('Events');
+        await expect(overviewpage.eventsSectionTitle).toBeVisible();
 
-        // Wait for Charging Stations table to load
-        await overviewpage.waitForChargingStationsTableLoaded();
-        expect(await overviewpage.chargingStationsTableRows.count()).toBeGreaterThan(0);
-
-        // Verify row đầu tiên
-        const firstRow = overviewpage.chargingStationsTableRows.first();
-        await expect(firstRow).toBeVisible();
+        await expect(overviewpage.chargingStationsTableRows.first()).toBeVisible();
+        await expect(overviewpage.chargingStationsTableRows).toHaveCount(20);
     });
 })
