@@ -1,4 +1,4 @@
-export class OverviewPage {
+export class OverviewChartPage {
     constructor(page) {
         this.page = page;
         this.chargingStationsSectionTitle = this.page.locator('span').filter({ hasText: 'Charging Stations' });

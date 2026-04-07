@@ -1,14 +1,14 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { BasePage } from '../pages/BasePage';
-import { OverviewPage } from '../pages/Overviewpage';
+import { OverviewChartPage } from '../pages/Overview_chartpage';
 
-test.describe('Overview Page - Post Login Verification', () => {
+test.describe('Overview Chart Page - Post Login Verification', () => {
     // TC03: Verify all section titles are displayed correctly after login
     test('TC03 - Verify all section titles are displayed correctly after login', async ({ page }) => {
         const loginPage = new LoginPage(page);
         const basePage = new BasePage(page);
-        const overviewpage = new OverviewPage(page);
+        const overviewpage = new OverviewChartPage(page);
 
         // Go to URL
         await basePage.goToURL();

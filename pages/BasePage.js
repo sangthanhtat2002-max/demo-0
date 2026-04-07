@@ -1,5 +1,6 @@
 export class BasePage {
-  constructor() {
+  constructor(page) {
+    this.page = page;
     this.url = process.env.BASE_URL;
   }
 
