@@ -11,6 +11,7 @@ export class OverviewMapPage {
         // Map container
         this.mapContainer = this.page.locator('gmp-advanced-marker').first();
     }
+
     async navigateToMapView() {
         await this.overviewDropdown.hover();
         await this.overviewDropdown.waitFor({ state: 'visible' });

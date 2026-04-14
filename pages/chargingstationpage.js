@@ -2,7 +2,8 @@ export class ChargingStationPage {
     constructor(page) {
         this.page = page;
         // Dropdown trigger (nút Charging Stations hoặc dropdown chứa Charging Stations)
-        this.chargingStationDropdown = this.page.locator('span').filter({ hasText: 'Charging Stations' });
+        this.chargingStationDropdown = this.page.locator('span:has-text("Charging Stations")');
+        this.dropMenu = this.page.locator('div.lm--navmenu__sub');
         // Menu item "Charging Stations"
         this.chargingStationMenuItem = this.page.locator('a[href="/chargepoints"]');
 
