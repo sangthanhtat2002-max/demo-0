@@ -16,7 +16,7 @@ export class LocationPage {
     async navigateToLocationView() {
         await this.chargingStationDropdown.hover();
         await this.chargingStationDropdown.waitFor({ state: 'visible' });
-        await this.locationMenuItem.click();
+        await this.locationMenuItem.click({ force: true });
         await this.page.waitForLoadState('networkidle');
     }
 

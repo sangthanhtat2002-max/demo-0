@@ -13,7 +13,7 @@ export class ChargingStationPage {
     async navigateToChargingStationView() {
         await this.chargingStationDropdown.hover();
         await this.chargingStationDropdown.waitFor({ state: 'visible' });
-        await this.chargingStationMenuItem.click();
+        await this.chargingStationMenuItem.click({ force: true });
         await this.page.waitForLoadState('networkidle');
     }
 

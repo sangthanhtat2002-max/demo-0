@@ -6,7 +6,7 @@ export class Smartcharging {
     }
 
     async navigateToSmartchargingView() {
-        await this.SmartchargingMenu.click();
+        await this.SmartchargingMenu.click({ force: true });
         await this.page.waitForLoadState('networkidle');
     }
 
